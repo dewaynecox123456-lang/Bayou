@@ -1,0 +1,20 @@
+[
+  {
+    "sku": "POCKET-REF",
+    "title": "Pocket Reference",
+    "price": 9.99,
+    "description": "Quick-start TikTok + Payments pocket guide.",
+    "paypal_me": "https://www.paypal.me/Dewaynecox123456/9.99",
+    "cash_app": "https://cash.app/$kittyslayer227/9.99",
+    "deliver": "files/pocket-reference.pdf"
+  },
+  {
+    "sku": "MAIN-GUIDE",
+    "title": "Technical Guide (Main)",
+    "price": 29.0,
+    "description": "Full technical how-to with examples and links.",
+    "paypal_me": "https://www.paypal.me/Dewaynecox123456/29.00",
+    "cash_app": "https://cash.app/$kittyslayer227/29.00",
+    "deliver": "files/technical-guide.pdf"
+  }
+]
