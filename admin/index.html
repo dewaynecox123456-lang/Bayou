@@ -1,15 +1,13 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>Admin</title>
-<style>body{font-family:system-ui;background:#0b0b0c;color:#f4f4f5;margin:0;padding:24px}
-textarea{width:100%;height:220px;border-radius:12px;border:1px solid #2c2c31;background:#121216;color:#fff;padding:12px}</style>
-</head><body>
-<h1>Admin Center (Offline Editor)</h1>
-<p>Edit the JSON below and click Export to download files; commit them to /data/.</p>
-<h3>products.json</h3><textarea id="p"></textarea><button onclick="ex('products.json',p.value)">Export</button>
-<h3>payments.json</h3><textarea id="pay"></textarea><button onclick="ex('payments.json',pay.value)">Export</button>
+<html><head><meta charset="utf-8"><title>Admin — Script Manager</title></head>
+<body>
+<h1>Admin — Script Manager</h1>
+<p>Add or remove script entries.</p>
+<textarea id="scripts" style="width:100%;height:200px"></textarea><br>
+<button onclick="exportScripts()">Export scripts.json</button>
+<div id="list"></div>
 <script>
-async function load(id, path){ const r=await fetch(path); document.getElementById(id).value = await r.text(); }
-function ex(name, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'application/json'})); a.download=name; a.click();}
-load('p','/data/products.json'); load('pay','/data/payments.json');
+function ex(name,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'application/json'}));a.download=name;a.click();}
+function exportScripts(){ex('scripts.json',document.getElementById('scripts').value);}
 </script>
 </body></html>
