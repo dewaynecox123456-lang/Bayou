@@ -3,25 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dewayne Website — Wonder Piece Studio</title>
+  <title>Wonder Piece Studio — Dewayne Website</title>
   <link rel="icon" href="/public/favicon.ico" />
   <style>
     body{font-family:system-ui;background:#0b0b0c;color:#f4f4f5;margin:0}
     .container{max-width:980px;margin:0 auto;padding:24px}
     .card{background:#121216;border:1px solid #1f1f24;border-radius:16px;padding:16px;margin:10px 0}
     a{color:#00d0ff;text-decoration:none}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
     button{padding:10px 14px;border-radius:12px;border:1px solid #2c2c31;background:#16161b;color:#fff;cursor:pointer}
+    header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    header img{width:32px;height:32px}
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Wonder Piece Studio</h1>
+    <header>
+      <img src="/public/logo.png" alt="WPS logo">
+      <h1 style="margin:0">Wonder Piece Studio</h1>
+      <span style="margin-left:auto"><a href="/admin/index.html">Admin</a></span>
+    </header>
     <p>Starter site. Edit <code>/data/*.json</code> to update products/services.</p>
+    <h2>Products</h2>
     <div id="products" class="grid"></div>
-    <div id="services" class="grid"></div>
-    <p><a href="/admin/index.html">Admin (offline editor)</a> • <a href="/legal/EULA.md">EULA</a> • <a href="/legal/RefundPolicy.md">Refund Policy</a></p>
-    <p style="opacity:.7">© {year} Wonder Piece Studio. All Rights Reserved.</p>
+    <footer style="opacity:.7;margin-top:24px">© {year} Wonder Piece Studio. All Rights Reserved.</footer>
   </div>
   <script>
     async function load(path){ const r = await fetch(path); return r.json(); }
@@ -36,15 +41,10 @@
     }
     (async () => {
       const pWrap = document.getElementById('products');
-      const sWrap = document.getElementById('services');
       try{
         const products = await load('/data/products.json');
         products.forEach(p => pWrap.appendChild(card(p)));
       }catch(e){ pWrap.innerHTML = '<div class="card">Missing /data/products.json</div>'; }
-      try{
-        const services = await load('/data/services.json');
-        services.forEach(s => sWrap.appendChild(card(s)));
-      }catch(e){ sWrap.innerHTML = '<div class="card">Missing /data/services.json</div>'; }
       document.body.innerHTML = document.body.innerHTML.replace("{year}", new Date().getFullYear());
     })();
   </script>

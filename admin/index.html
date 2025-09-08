@@ -1,16 +1,15 @@
 <!doctype html>
 <html><head><meta charset="utf-8"><title>Admin</title>
 <style>body{font-family:system-ui;background:#0b0b0c;color:#f4f4f5;margin:0;padding:24px}
-textarea{width:100%;height:240px;border-radius:12px;border:1px solid #2c2c31;background:#121216;color:#fff;padding:12px}</style>
+textarea{width:100%;height:220px;border-radius:12px;border:1px solid #2c2c31;background:#121216;color:#fff;padding:12px}</style>
 </head><body>
 <h1>Admin Center (Offline Editor)</h1>
 <p>Edit the JSON below and click Export to download files; commit them to /data/.</p>
 <h3>products.json</h3><textarea id="p"></textarea><button onclick="ex('products.json',p.value)">Export</button>
-<h3>services.json</h3><textarea id="s"></textarea><button onclick="ex('services.json',s.value)">Export</button>
 <h3>payments.json</h3><textarea id="pay"></textarea><button onclick="ex('payments.json',pay.value)">Export</button>
 <script>
 async function load(id, path){ const r=await fetch(path); document.getElementById(id).value = await r.text(); }
 function ex(name, text){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'application/json'})); a.download=name; a.click();}
-load('p','/data/products.json'); load('s','/data/services.json'); load('pay','/data/payments.json');
+load('p','/data/products.json'); load('pay','/data/payments.json');
 </script>
 </body></html>
